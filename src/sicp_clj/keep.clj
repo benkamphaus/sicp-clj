@@ -49,4 +49,15 @@
 (defn keep-if-eword [sent]
   (keep-if has-e? sent))
 
+; lambda repl examples:
+(defn keep-if-fl-same [sent]
+  (keep-if #(= (first %) (last %)) sent))
+;; (keep-if-fl-same '("alabama" "colorado"))
+; ("alabama")
 
+; Simple def of compose:
+(defn compose [f g]
+ #(f (g %)))
+
+; ...turns out to be a fairly powerful abstraction.
+(def get-second (compose first rest))
